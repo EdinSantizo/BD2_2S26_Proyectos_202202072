@@ -1,0 +1,22 @@
+flowchart TB
+
+    Q1["Q1<br/>Disponibilidad de asientos por clase"]
+    T1["disponibilidad_asientos_por_vuelo_clase<br/><br/>PK: vuelo_id<br/>CK: clase<br/>counter: disponibles<br/>counter: ocupados"]
+
+    Q2["Q2<br/>Historial cronológico de pasajero"]
+    T2["historial_reservas_por_pasajero<br/><br/>PK: pasajero_id<br/>CK1: fecha_salida DESC<br/>CK2: reserva_id<br/>Datos denormalizados de vuelo, reserva, asiento y pago"]
+
+    Q3["Q3<br/>Manifiesto de vuelo"]
+    T3["manifiesto_por_vuelo<br/><br/>PK: vuelo_id<br/>CK1: fila_asiento ASC<br/>CK2: letra_asiento ASC<br/>Datos denormalizados de pasajero, asiento, reserva y pago"]
+
+    Q4["Q4<br/>Ocupación por ruta y fechas"]
+    T4["ocupacion_por_ruta_mes<br/><br/>PK compuesta:<br/>origen + destino + anio_mes<br/>CK1: fecha_salida ASC<br/>CK2: vuelo_id<br/>counter: reservas_confirmadas<br/>counter: capacidad_total"]
+
+    Q5["Q5<br/>Top N de vuelos por ingresos"]
+    T5["ranking_ingresos_por_periodo<br/><br/>PK compuesta:<br/>fecha_inicio + fecha_fin<br/>CK1: ingreso_total DESC<br/>CK2: vuelo_id<br/>Datos agregados por vuelo"]
+
+    Q1 --> T1
+    Q2 --> T2
+    Q3 --> T3
+    Q4 --> T4
+    Q5 --> T5

@@ -1,0 +1,62 @@
+erDiagram
+
+    PASAJERO ||--o{ RESERVA : realiza
+    AERONAVE ||--o{ VUELO : opera
+    VUELO ||--o{ ASIENTO : contiene
+    VUELO ||--o{ RESERVA : recibe
+    ASIENTO ||--o{ RESERVA : se_asigna
+    RESERVA ||--|| PAGO : posee
+
+    PASAJERO {
+        uuid pasajero_id PK
+        string nombre
+        string email
+        string documento_identificacion
+        string telefono
+        string nacionalidad
+    }
+
+    AERONAVE {
+        uuid aeronave_id PK
+        string modelo
+        string aerolinea_operadora
+        string matricula
+        int capacidad_maxima
+    }
+
+    VUELO {
+        uuid vuelo_id PK
+        string codigo_vuelo
+        uuid aeronave_id FK
+        string aeropuerto_origen
+        string aeropuerto_destino
+        timestamp fecha_hora_salida
+        timestamp fecha_hora_llegada
+        string estado
+    }
+
+    ASIENTO {
+        uuid asiento_id PK
+        uuid vuelo_id FK
+        string numero_asiento
+        string clase
+        string estado
+    }
+
+    RESERVA {
+        uuid reserva_id PK
+        uuid pasajero_id FK
+        uuid vuelo_id FK
+        uuid asiento_id FK
+        timestamp fecha_reserva
+        string estado
+    }
+
+    PAGO {
+        uuid pago_id PK
+        uuid reserva_id FK
+        decimal monto
+        string metodo_pago
+        timestamp fecha_pago
+        string estado
+    }
