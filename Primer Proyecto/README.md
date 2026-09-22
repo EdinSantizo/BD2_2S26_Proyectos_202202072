@@ -1,28 +1,28 @@
-\# Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
+﻿# Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
 
 
 
-Proyecto desarrollado para el curso de \*\*Sistemas de Bases de Datos 2\*\* de la Universidad de San Carlos de Guatemala.
+Proyecto desarrollado para el curso de **Sistemas de Bases de Datos 2** de la Universidad de San Carlos de Guatemala.
 
 
 
-\*\*Carné:\*\* 202202072
+**Carné:** 202202072
 
 
 
-\---
+---
 
 
 
-\## Descripción
+## Descripción
 
 
 
-El proyecto implementa un sistema de gestión de reservas y boletos aéreos utilizando \*\*Apache Cassandra\*\* como base de datos distribuida.
+El proyecto implementa un sistema de gestión de reservas y boletos aéreos utilizando **Apache Cassandra** como base de datos distribuida.
 
 
 
-La solución fue diseñada utilizando un enfoque \*\*Query-Driven\*\*, donde las tablas se crean a partir de las consultas que el sistema debe resolver.
+La solución fue diseñada utilizando un enfoque **Query-Driven**, donde las tablas se crean a partir de las consultas que el sistema debe resolver.
 
 
 
@@ -30,17 +30,17 @@ El sistema administra información relacionada con:
 
 
 
-\- Pasajeros.
+- Pasajeros.
 
-\- Aeronaves.
+- Aeronaves.
 
-\- Vuelos.
+- Vuelos.
 
-\- Asientos.
+- Asientos.
 
-\- Reservas.
+- Reservas.
 
-\- Pagos.
+- Pagos.
 
 
 
@@ -48,33 +48,33 @@ Además, implementa:
 
 
 
-\- Clúster Cassandra de 3 nodos.
+- Clúster Cassandra de 3 nodos.
 
-\- Replication Factor 3.
+- Replication Factor 3.
 
-\- NetworkTopologyStrategy.
+- NetworkTopologyStrategy.
 
-\- 100,000 reservas.
+- 100,000 reservas.
 
-\- Batch Writes.
+- Batch Writes.
 
-\- 5 consultas Query-Driven.
+- 5 consultas Query-Driven.
 
-\- Contadores Cassandra.
+- Contadores Cassandra.
 
-\- TTL.
+- TTL.
 
-\- Pruebas con ONE, QUORUM y ALL.
+- Pruebas con ONE, QUORUM y ALL.
 
-\- Simulación de caída y recuperación de nodos.
-
-
-
-\---
+- Simulación de caída y recuperación de nodos.
 
 
 
-\# Arquitectura
+---
+
+
+
+# Arquitectura
 
 
 
@@ -132,11 +132,11 @@ cassandra3 -> localhost:9044
 
 
 
-\---
+---
 
 
 
-\# Estructura del proyecto
+# Estructura del proyecto
 
 
 
@@ -148,49 +148,49 @@ Primer Proyecto/
 
 ├── cql/
 
-│   ├── 01\_keyspace.cql
+│   ├── 01_keyspace.cql
 
-│   ├── 02\_schema.cql
+│   ├── 02_schema.cql
 
-│   └── 03\_queries.cql
+│   └── 03_queries.cql
 
 │
 
 ├── scripts/
 
-│   ├── 01\_verificar\_conexion.py
+│   ├── 01_verificar_conexion.py
 
-│   ├── 02\_carga\_prueba.py
+│   ├── 02_carga_prueba.py
 
-│   ├── 03\_carga\_masiva.py
+│   ├── 03_carga_masiva.py
 
-│   └── 04\_prueba\_tolerancia.py
+│   └── 04_prueba_tolerancia.py
 
 │
 
 ├── docs/
 
-│   ├── diseno\_query\_driven.md
+│   ├── diseno_query_driven.md
 
-│   ├── documentacion\_tecnica.md
+│   ├── documentacion_tecnica.md
 
-│   ├── documentacion\_tecnica.pdf
+│   ├── documentacion_tecnica.pdf
 
-│   ├── manual\_usuario.md
+│   ├── manual_usuario.md
 
-│   └── manual\_usuario.pdf
+│   └── manual_usuario.pdf
 
 │
 
 ├── diagramas/
 
-│   ├── modelo\_er\_conceptual.mmd
+│   ├── modelo_er_conceptual.mmd
 
-│   ├── modelo\_er\_conceptual.pdf
+│   ├── modelo_er_conceptual.pdf
 
-│   ├── modelo\_logico\_cassandra.mmd
+│   ├── modelo_logico_cassandra.mmd
 
-│   └── modelo\_logico\_cassandra.pdf
+│   └── modelo_logico_cassandra.pdf
 
 │
 
@@ -202,7 +202,7 @@ Primer Proyecto/
 
 │   ├── consultas/
 
-│   └── tolerancia\_fallos/
+│   └── tolerancia_fallos/
 
 │
 
@@ -216,11 +216,11 @@ Primer Proyecto/
 
 
 
-\---
+---
 
 
 
-\# Requisitos
+# Requisitos
 
 
 
@@ -228,23 +228,23 @@ Para ejecutar el proyecto se requiere:
 
 
 
-\- Docker Desktop.
+- Docker Desktop.
 
-\- Docker Compose.
+- Docker Compose.
 
-\- Python 3.12.
+- Python 3.12.
 
-\- Git.
+- Git.
 
-\- PowerShell.
-
-
-
-\---
+- PowerShell.
 
 
 
-\# Iniciar el clúster
+---
+
+
+
+# Iniciar el clúster
 
 
 
@@ -310,11 +310,11 @@ N = Normal
 
 
 
-\---
+---
 
 
 
-\# Crear el keyspace
+# Crear el keyspace
 
 
 
@@ -324,7 +324,7 @@ Ejecutar:
 
 ```powershell
 
-Get-Content -Raw .\\cql\\01\_keyspace.cql | docker exec -i cassandra1 cqlsh
+Get-Content -Raw .\cql\01_keyspace.cql | docker exec -i cassandra1 cqlsh
 
 ```
 
@@ -356,11 +356,11 @@ datacenter1 = 3
 
 
 
-\---
+---
 
 
 
-\# Crear las tablas
+# Crear las tablas
 
 
 
@@ -370,61 +370,61 @@ Ejecutar:
 
 ```powershell
 
-Get-Content -Raw .\\cql\\02\_schema.cql | docker exec -i cassandra1 cqlsh
+Get-Content -Raw .\cql\02_schema.cql | docker exec -i cassandra1 cqlsh
 
 ```
 
 
 
-El esquema contiene \*\*11 tablas\*\*.
+El esquema contiene **11 tablas**.
 
 
 
-\---
+---
 
 
 
-\# Tablas principales
+# Tablas principales
 
 
 
-\## Tablas operativas
+## Tablas operativas
 
 
 
 ```text
 
-pasajeros\_por\_id
+pasajeros_por_id
 
-aeronaves\_por\_id
+aeronaves_por_id
 
-vuelos\_por\_id
+vuelos_por_id
 
-asientos\_por\_vuelo
+asientos_por_vuelo
 
-reservas\_por\_id
+reservas_por_id
 
-pagos\_por\_reserva
+pagos_por_reserva
 
 ```
 
 
 
-\## Tablas Query-Driven
+## Tablas Query-Driven
 
 
 
 ```text
 
-Q1 -> disponibilidad\_asientos\_por\_vuelo\_clase
+Q1 -> disponibilidad_asientos_por_vuelo_clase
 
-Q2 -> historial\_reservas\_por\_pasajero
+Q2 -> historial_reservas_por_pasajero
 
-Q3 -> manifiesto\_por\_vuelo
+Q3 -> manifiesto_por_vuelo
 
-Q4 -> ocupacion\_por\_ruta\_mes
+Q4 -> ocupacion_por_ruta_mes
 
-Q5 -> ranking\_ingresos\_por\_periodo
+Q5 -> ranking_ingresos_por_periodo
 
 ```
 
@@ -444,11 +444,11 @@ ALLOW FILTERING
 
 
 
-\---
+---
 
 
 
-\# Entorno Python
+# Entorno Python
 
 
 
@@ -470,17 +470,17 @@ Instalar las dependencias:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 ```
 
 
 
-\---
+---
 
 
 
-\# Verificar conexión
+# Verificar conexión
 
 
 
@@ -490,7 +490,7 @@ Ejecutar:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe scripts\\01\_verificar\_conexion.py
+.\.venv\Scripts\python.exe scripts\01_verificar_conexion.py
 
 ```
 
@@ -514,11 +514,11 @@ Tablas encontradas: 11
 
 
 
-\---
+---
 
 
 
-\# Carga masiva
+# Carga masiva
 
 
 
@@ -528,19 +528,19 @@ El script principal de carga es:
 
 ```text
 
-scripts/03\_carga\_masiva.py
+scripts/03_carga_masiva.py
 
 ```
 
 
 
-Para generar las \*\*100,000 reservas\*\*:
+Para generar las **100,000 reservas**:
 
 
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -W ignore::DeprecationWarning -u scripts\\03\_carga\_masiva.py --reservas 100000
+.\.venv\Scripts\python.exe -W ignore::DeprecationWarning -u scripts\03_carga_masiva.py --reservas 100000
 
 ```
 
@@ -584,11 +584,11 @@ El tiempo de ejecución puede variar dependiendo del equipo.
 
 
 
-\---
+---
 
 
 
-\# Batch Writes
+# Batch Writes
 
 
 
@@ -600,9 +600,9 @@ La carga utiliza:
 
 BatchStatement(
 
-&#x20;   batch\_type=BatchType.UNLOGGED,
+    batch_type=BatchType.UNLOGGED,
 
-&#x20;   consistency\_level=ConsistencyLevel.ONE
+    consistency_level=ConsistencyLevel.ONE
 
 )
 
@@ -636,23 +636,23 @@ Las cuatro escrituras corresponden a:
 
 ```text
 
-reservas\_por\_id
+reservas_por_id
 
-pagos\_por\_reserva
+pagos_por_reserva
 
-historial\_reservas\_por\_pasajero
+historial_reservas_por_pasajero
 
-manifiesto\_por\_vuelo
+manifiesto_por_vuelo
 
 ```
 
 
 
-\---
+---
 
 
 
-\# Consultas requeridas
+# Consultas requeridas
 
 
 
@@ -662,13 +662,13 @@ Las consultas se encuentran en:
 
 ```text
 
-cql/03\_queries.cql
+cql/03_queries.cql
 
 ```
 
 
 
-\## Q1 - Disponibilidad de asientos por clase
+## Q1 - Disponibilidad de asientos por clase
 
 
 
@@ -692,11 +692,11 @@ para un vuelo específico.
 
 
 
-\---
+---
 
 
 
-\## Q2 - Historial de pasajero
+## Q2 - Historial de pasajero
 
 
 
@@ -730,11 +730,11 @@ Monto
 
 
 
-\---
+---
 
 
 
-\## Q3 - Manifiesto de vuelo
+## Q3 - Manifiesto de vuelo
 
 
 
@@ -766,11 +766,11 @@ Ejemplo:
 
 
 
-\---
+---
 
 
 
-\## Q4 - Ocupación por ruta
+## Q4 - Ocupación por ruta
 
 
 
@@ -796,11 +796,11 @@ Ocupación: 66.67 %
 
 
 
-\---
+---
 
 
 
-\## Q5 - Top N por ingresos
+## Q5 - Top N por ingresos
 
 
 
@@ -814,7 +814,7 @@ La tabla está ordenada mediante:
 
 ```text
 
-ingreso\_total DESC
+ingreso_total DESC
 
 ```
 
@@ -836,11 +836,11 @@ sin ordenar resultados en Python.
 
 
 
-\---
+---
 
 
 
-\# TTL
+# TTL
 
 
 
@@ -872,11 +872,11 @@ Resultado final:
 
 
 
-\---
+---
 
 
 
-\# Tolerancia a fallos
+# Tolerancia a fallos
 
 
 
@@ -900,7 +900,7 @@ Cada nivel fue ejecutado 20 veces.
 
 
 
-\## Tres nodos activos
+## Tres nodos activos
 
 
 
@@ -916,7 +916,7 @@ ALL     -> 20 éxitos / 0 errores
 
 
 
-\## Un nodo caído
+## Un nodo caído
 
 
 
@@ -956,15 +956,15 @@ Error obtenido con ALL:
 
 Cannot achieve consistency level ALL
 
-required\_replicas: 3
+required_replicas: 3
 
-alive\_replicas: 2
+alive_replicas: 2
 
 ```
 
 
 
-\## Clúster recuperado
+## Clúster recuperado
 
 
 
@@ -984,11 +984,11 @@ ALL     -> 20 éxitos / 0 errores
 
 
 
-\---
+---
 
 
 
-\# Documentación
+# Documentación
 
 
 
@@ -998,7 +998,7 @@ La documentación técnica completa se encuentra en:
 
 ```text
 
-docs/documentacion\_tecnica.pdf
+docs/documentacion_tecnica.pdf
 
 ```
 
@@ -1010,7 +1010,7 @@ El manual de usuario se encuentra en:
 
 ```text
 
-docs/manual\_usuario.pdf
+docs/manual_usuario.pdf
 
 ```
 
@@ -1022,17 +1022,17 @@ El análisis Query-Driven se encuentra en:
 
 ```text
 
-docs/diseno\_query\_driven.md
+docs/diseno_query_driven.md
 
 ```
 
 
 
-\---
+---
 
 
 
-\# Diagramas
+# Diagramas
 
 
 
@@ -1042,7 +1042,7 @@ Modelo conceptual:
 
 ```text
 
-diagramas/modelo\_er\_conceptual.pdf
+diagramas/modelo_er_conceptual.pdf
 
 ```
 
@@ -1054,17 +1054,17 @@ Modelo lógico Cassandra:
 
 ```text
 
-diagramas/modelo\_logico\_cassandra.pdf
+diagramas/modelo_logico_cassandra.pdf
 
 ```
 
 
 
-\---
+---
 
 
 
-\# Evidencias
+# Evidencias
 
 
 
@@ -1080,7 +1080,7 @@ evidencias/carga/
 
 evidencias/consultas/
 
-evidencias/tolerancia\_fallos/
+evidencias/tolerancia_fallos/
 
 ```
 
@@ -1090,33 +1090,33 @@ Incluyen:
 
 
 
-\- Estado de los tres nodos.
+- Estado de los tres nodos.
 
-\- Configuración del clúster.
+- Configuración del clúster.
 
-\- Schema Agreement.
+- Schema Agreement.
 
-\- Replication Factor 3.
+- Replication Factor 3.
 
-\- Carga de 100,000 reservas.
+- Carga de 100,000 reservas.
 
-\- Resultados de las cinco consultas.
+- Resultados de las cinco consultas.
 
-\- Prueba de TTL.
+- Prueba de TTL.
 
-\- Caída de un nodo.
+- Caída de un nodo.
 
-\- Pruebas ONE, QUORUM y ALL.
+- Pruebas ONE, QUORUM y ALL.
 
-\- Recuperación del clúster.
-
-
-
-\---
+- Recuperación del clúster.
 
 
 
-\# Detener el sistema
+---
+
+
+
+# Detener el sistema
 
 
 
@@ -1164,11 +1164,11 @@ si se desea conservar la información almacenada.
 
 
 
-\---
+---
 
 
 
-\# Resultados finales
+# Resultados finales
 
 
 
@@ -1226,17 +1226,18 @@ Recuperación                       Validada
 
 
 
-\---
+---
 
 
 
-\## Autor
+## Autor
 
 
 
-\*\*Carné:\*\* 202202072  
+**Carné:** 202202072  
 
-\*\*Universidad de San Carlos de Guatemala\*\*  
+**Universidad de San Carlos de Guatemala**  
 
-\*\*Ingeniería en Ciencias y Sistemas\*\*
+**Ingeniería en Ciencias y Sistemas**
+
 

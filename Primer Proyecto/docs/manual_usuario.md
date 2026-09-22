@@ -1,30 +1,30 @@
-\# MANUAL DE USUARIO
+﻿# MANUAL DE USUARIO
 
 
 
-\## Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
+## Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
 
 
 
-\*\*Universidad de San Carlos de Guatemala\*\*  
+**Universidad de San Carlos de Guatemala**  
 
-\*\*Facultad de Ingeniería\*\*  
+**Facultad de Ingeniería**  
 
-\*\*Ingeniería en Ciencias y Sistemas\*\*  
+**Ingeniería en Ciencias y Sistemas**  
 
-\*\*Curso:\*\* Sistemas de Bases de Datos 2  
+**Curso:** Sistemas de Bases de Datos 2  
 
-\*\*Proyecto:\*\* Primer Proyecto  
+**Proyecto:** Primer Proyecto  
 
-\*\*Carné:\*\* 202202072  
-
-
-
-\---
+**Carné:** 202202072  
 
 
 
-\# 1. Introducción
+---
+
+
+
+# 1. Introducción
 
 
 
@@ -40,21 +40,21 @@ También utiliza scripts Python para:
 
 
 
-\- Verificar la conexión con Cassandra.
+- Verificar la conexión con Cassandra.
 
-\- Generar datos de prueba.
+- Generar datos de prueba.
 
-\- Realizar la carga masiva de reservas.
+- Realizar la carga masiva de reservas.
 
-\- Ejecutar pruebas de consistencia y tolerancia a fallos.
-
-
-
-\---
+- Ejecutar pruebas de consistencia y tolerancia a fallos.
 
 
 
-\# 2. Requisitos previos
+---
+
+
+
+# 2. Requisitos previos
 
 
 
@@ -62,17 +62,17 @@ Para ejecutar el proyecto se requiere:
 
 
 
-\- Windows 10 o superior.
+- Windows 10 o superior.
 
-\- Docker Desktop.
+- Docker Desktop.
 
-\- Docker Compose.
+- Docker Compose.
 
-\- Python 3.12.
+- Python 3.12.
 
-\- Git.
+- Git.
 
-\- PowerShell.
+- PowerShell.
 
 
 
@@ -94,11 +94,11 @@ Faker: 40.39.0
 
 
 
-\---
+---
 
 
 
-\# 3. Estructura del proyecto
+# 3. Estructura del proyecto
 
 
 
@@ -114,45 +114,45 @@ Primer Proyecto/
 
 ├── cql/
 
-│   ├── 01\_keyspace.cql
+│   ├── 01_keyspace.cql
 
-│   ├── 02\_schema.cql
+│   ├── 02_schema.cql
 
-│   └── 03\_queries.cql
+│   └── 03_queries.cql
 
 │
 
 ├── scripts/
 
-│   ├── 01\_verificar\_conexion.py
+│   ├── 01_verificar_conexion.py
 
-│   ├── 02\_carga\_prueba.py
+│   ├── 02_carga_prueba.py
 
-│   ├── 03\_carga\_masiva.py
+│   ├── 03_carga_masiva.py
 
-│   └── 04\_prueba\_tolerancia.py
+│   └── 04_prueba_tolerancia.py
 
 │
 
 ├── diagramas/
 
-│   ├── modelo\_er\_conceptual.mmd
+│   ├── modelo_er_conceptual.mmd
 
-│   ├── modelo\_er\_conceptual.pdf
+│   ├── modelo_er_conceptual.pdf
 
-│   ├── modelo\_logico\_cassandra.mmd
+│   ├── modelo_logico_cassandra.mmd
 
-│   └── modelo\_logico\_cassandra.pdf
+│   └── modelo_logico_cassandra.pdf
 
 │
 
 ├── docs/
 
-│   ├── diseno\_query\_driven.md
+│   ├── diseno_query_driven.md
 
-│   ├── documentacion\_tecnica.md
+│   ├── documentacion_tecnica.md
 
-│   └── manual\_usuario.md
+│   └── manual_usuario.md
 
 │
 
@@ -164,7 +164,7 @@ Primer Proyecto/
 
 │   ├── consultas/
 
-│   └── tolerancia\_fallos/
+│   └── tolerancia_fallos/
 
 │
 
@@ -176,11 +176,11 @@ Primer Proyecto/
 
 
 
-\---
+---
 
 
 
-\# 4. Abrir el proyecto
+# 4. Abrir el proyecto
 
 
 
@@ -190,7 +190,7 @@ Abrir PowerShell y dirigirse a la carpeta del proyecto:
 
 ```powershell
 
-cd "C:\\Users\\Admin\\Documents\\BD2\_2S26\_Proyectos\_202202072\\Primer Proyecto"
+cd "C:\Users\Admin\Documents\BD2_2S26_Proyectos_202202072\Primer Proyecto"
 
 ```
 
@@ -200,11 +200,11 @@ Todos los comandos de este manual deben ejecutarse desde esta ubicación, salvo 
 
 
 
-\---
+---
 
 
 
-\# 5. Levantar el clúster Cassandra
+# 5. Levantar el clúster Cassandra
 
 
 
@@ -264,11 +264,11 @@ cassandra3 -> 9044
 
 
 
-\---
+---
 
 
 
-\# 6. Verificar los contenedores
+# 6. Verificar los contenedores
 
 
 
@@ -308,11 +308,11 @@ docker ps
 
 
 
-\---
+---
 
 
 
-\# 7. Esperar el inicio de Cassandra
+# 7. Esperar el inicio de Cassandra
 
 
 
@@ -374,11 +374,11 @@ UN  nodo3
 
 
 
-\---
+---
 
 
 
-\# 8. Verificar información del clúster
+# 8. Verificar información del clúster
 
 
 
@@ -424,11 +424,11 @@ Apache Cassandra 4.1.12
 
 
 
-\---
+---
 
 
 
-\# 9. Crear el keyspace
+# 9. Crear el keyspace
 
 
 
@@ -438,7 +438,7 @@ El archivo:
 
 ```text
 
-cql/01\_keyspace.cql
+cql/01_keyspace.cql
 
 ```
 
@@ -462,7 +462,7 @@ Para ejecutarlo:
 
 ```powershell
 
-Get-Content -Raw .\\cql\\01\_keyspace.cql | docker exec -i cassandra1 cqlsh
+Get-Content -Raw .\cql\01_keyspace.cql | docker exec -i cassandra1 cqlsh
 
 ```
 
@@ -484,11 +484,11 @@ Datacenter = datacenter1
 
 
 
-\---
+---
 
 
 
-\# 10. Verificar el keyspace
+# 10. Verificar el keyspace
 
 
 
@@ -498,7 +498,7 @@ Ejecutar:
 
 ```powershell
 
-docker exec cassandra1 cqlsh -e "SELECT keyspace\_name, replication FROM system\_schema.keyspaces WHERE keyspace\_name = 'aerolinea';"
+docker exec cassandra1 cqlsh -e "SELECT keyspace_name, replication FROM system_schema.keyspaces WHERE keyspace_name = 'aerolinea';"
 
 ```
 
@@ -546,11 +546,11 @@ y ownership efectivo del 100%.
 
 
 
-\---
+---
 
 
 
-\# 11. Crear las tablas
+# 11. Crear las tablas
 
 
 
@@ -560,7 +560,7 @@ El esquema Cassandra se encuentra en:
 
 ```text
 
-cql/02\_schema.cql
+cql/02_schema.cql
 
 ```
 
@@ -572,7 +572,7 @@ Para crearlo ejecutar:
 
 ```powershell
 
-Get-Content -Raw .\\cql\\02\_schema.cql | docker exec -i cassandra1 cqlsh
+Get-Content -Raw .\cql\02_schema.cql | docker exec -i cassandra1 cqlsh
 
 ```
 
@@ -582,11 +582,11 @@ El proyecto crea 11 tablas.
 
 
 
-\---
+---
 
 
 
-\# 12. Verificar las tablas
+# 12. Verificar las tablas
 
 
 
@@ -596,7 +596,7 @@ Ejecutar:
 
 ```powershell
 
-docker exec cassandra1 cqlsh -e "SELECT table\_name FROM system\_schema.tables WHERE keyspace\_name = 'aerolinea';"
+docker exec cassandra1 cqlsh -e "SELECT table_name FROM system_schema.tables WHERE keyspace_name = 'aerolinea';"
 
 ```
 
@@ -608,37 +608,37 @@ Se deben obtener 11 tablas:
 
 ```text
 
-aeronaves\_por\_id
+aeronaves_por_id
 
-asientos\_por\_vuelo
+asientos_por_vuelo
 
-disponibilidad\_asientos\_por\_vuelo\_clase
+disponibilidad_asientos_por_vuelo_clase
 
-historial\_reservas\_por\_pasajero
+historial_reservas_por_pasajero
 
-manifiesto\_por\_vuelo
+manifiesto_por_vuelo
 
-ocupacion\_por\_ruta\_mes
+ocupacion_por_ruta_mes
 
-pagos\_por\_reserva
+pagos_por_reserva
 
-pasajeros\_por\_id
+pasajeros_por_id
 
-ranking\_ingresos\_por\_periodo
+ranking_ingresos_por_periodo
 
-reservas\_por\_id
+reservas_por_id
 
-vuelos\_por\_id
+vuelos_por_id
 
 ```
 
 
 
-\---
+---
 
 
 
-\# 13. Crear el entorno virtual Python
+# 13. Crear el entorno virtual Python
 
 
 
@@ -666,11 +666,11 @@ El entorno se creará en:
 
 
 
-\---
+---
 
 
 
-\# 14. Instalar dependencias Python
+# 14. Instalar dependencias Python
 
 
 
@@ -692,7 +692,7 @@ Para instalarlas:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 ```
 
@@ -718,11 +718,11 @@ pyasyncore
 
 
 
-\---
+---
 
 
 
-\# 15. Verificar conexión Python con Cassandra
+# 15. Verificar conexión Python con Cassandra
 
 
 
@@ -732,7 +732,7 @@ Ejecutar:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe scripts\\01\_verificar\_conexion.py
+.\.venv\Scripts\python.exe scripts\01_verificar_conexion.py
 
 ```
 
@@ -766,11 +766,11 @@ También deben encontrarse:
 
 
 
-\---
+---
 
 
 
-\# 16. Carga de prueba
+# 16. Carga de prueba
 
 
 
@@ -780,7 +780,7 @@ Antes de ejecutar la carga definitiva puede realizarse una prueba utilizando:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe scripts\\02\_carga\_prueba.py
+.\.venv\Scripts\python.exe scripts\02_carga_prueba.py
 
 ```
 
@@ -812,11 +812,11 @@ Esta carga se utiliza únicamente para validar el funcionamiento del modelo.
 
 
 
-\---
+---
 
 
 
-\# 17. Carga masiva
+# 17. Carga masiva
 
 
 
@@ -826,7 +826,7 @@ La carga definitiva se realiza con:
 
 ```text
 
-scripts/03\_carga\_masiva.py
+scripts/03_carga_masiva.py
 
 ```
 
@@ -838,7 +838,7 @@ Para generar las 100,000 reservas solicitadas:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -W ignore::DeprecationWarning -u scripts\\03\_carga\_masiva.py --reservas 100000
+.\.venv\Scripts\python.exe -W ignore::DeprecationWarning -u scripts\03_carga_masiva.py --reservas 100000
 
 ```
 
@@ -852,11 +852,11 @@ Por esta razón no debe ejecutarse nuevamente si se desea conservar la carga act
 
 
 
-\---
+---
 
 
 
-\# 18. Resultado esperado de la carga
+# 18. Resultado esperado de la carga
 
 
 
@@ -910,11 +910,11 @@ El tiempo puede variar según el equipo donde se ejecute.
 
 
 
-\---
+---
 
 
 
-\# 19. Verificar cantidad de reservas
+# 19. Verificar cantidad de reservas
 
 
 
@@ -924,7 +924,7 @@ Ejecutar:
 
 ```powershell
 
-docker exec cassandra1 cqlsh -e "SELECT COUNT(\*) FROM aerolinea.reservas\_por\_id;"
+docker exec cassandra1 cqlsh -e "SELECT COUNT(*) FROM aerolinea.reservas_por_id;"
 
 ```
 
@@ -966,11 +966,11 @@ Las consultas principales del sistema no utilizan este patrón.
 
 
 
-\---
+---
 
 
 
-\# 20. Consultas principales
+# 20. Consultas principales
 
 
 
@@ -980,7 +980,7 @@ Las cinco consultas se encuentran almacenadas en:
 
 ```text
 
-cql/03\_queries.cql
+cql/03_queries.cql
 
 ```
 
@@ -1004,11 +1004,11 @@ Cada consulta utiliza una tabla diseñada específicamente para su patrón de ac
 
 
 
-\---
+---
 
 
 
-\# 21. Consulta Q1 - Disponibilidad por clase
+# 21. Consulta Q1 - Disponibilidad por clase
 
 
 
@@ -1028,17 +1028,17 @@ Ejemplo:
 
 SELECT
 
-&#x20;   clase,
+    clase,
 
-&#x20;   disponibles,
+    disponibles,
 
-&#x20;   ocupados
+    ocupados
 
-FROM disponibilidad\_asientos\_por\_vuelo\_clase
+FROM disponibilidad_asientos_por_vuelo_clase
 
-WHERE vuelo\_id =
+WHERE vuelo_id =
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
 
 ```
 
@@ -1060,11 +1060,11 @@ ECONOMY  -> disponibles: 27, ocupados: 63
 
 
 
-\---
+---
 
 
 
-\# 22. Consulta Q2 - Historial del pasajero
+# 22. Consulta Q2 - Historial del pasajero
 
 
 
@@ -1084,33 +1084,33 @@ Ejemplo:
 
 SELECT
 
-&#x20;   fecha\_salida,
+    fecha_salida,
 
-&#x20;   codigo\_vuelo,
+    codigo_vuelo,
 
-&#x20;   aeropuerto\_origen,
+    aeropuerto_origen,
 
-&#x20;   aeropuerto\_destino,
+    aeropuerto_destino,
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   clase,
+    clase,
 
-&#x20;   estado\_reserva,
+    estado_reserva,
 
-&#x20;   estado\_pago,
+    estado_pago,
 
-&#x20;   monto\_pago
+    monto_pago
 
-FROM historial\_reservas\_por\_pasajero
+FROM historial_reservas_por_pasajero
 
-WHERE pasajero\_id =
+WHERE pasajero_id =
 
-&#x20;   af65cd22-ae00-5a4a-8268-45d22029b352
+    af65cd22-ae00-5a4a-8268-45d22029b352
 
-&#x20; AND fecha\_salida >= '2026-01-10T00:00:00Z'
+  AND fecha_salida >= '2026-01-10T00:00:00Z'
 
-&#x20; AND fecha\_salida <= '2026-01-26T23:59:59Z';
+  AND fecha_salida <= '2026-01-26T23:59:59Z';
 
 ```
 
@@ -1132,11 +1132,11 @@ Las filas se encuentran ordenadas de la fecha más reciente a la más antigua.
 
 
 
-\---
+---
 
 
 
-\# 23. Consulta Q3 - Manifiesto de vuelo
+# 23. Consulta Q3 - Manifiesto de vuelo
 
 
 
@@ -1156,23 +1156,23 @@ Ejemplo:
 
 SELECT
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   clase,
+    clase,
 
-&#x20;   nombre\_pasajero,
+    nombre_pasajero,
 
-&#x20;   documento\_identificacion,
+    documento_identificacion,
 
-&#x20;   estado\_reserva,
+    estado_reserva,
 
-&#x20;   estado\_pago
+    estado_pago
 
-FROM manifiesto\_por\_vuelo
+FROM manifiesto_por_vuelo
 
-WHERE vuelo\_id =
+WHERE vuelo_id =
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
 
 ```
 
@@ -1214,11 +1214,11 @@ Orden:
 
 
 
-\---
+---
 
 
 
-\# 24. Consulta Q4 - Ocupación por ruta
+# 24. Consulta Q4 - Ocupación por ruta
 
 
 
@@ -1238,25 +1238,25 @@ Ejemplo:
 
 SELECT
 
-&#x20;   SUM(reservas\_confirmadas) AS reservas\_confirmadas,
+    SUM(reservas_confirmadas) AS reservas_confirmadas,
 
-&#x20;   SUM(capacidad\_total) AS capacidad\_total,
+    SUM(capacidad_total) AS capacidad_total,
 
-&#x20;   (CAST(SUM(reservas\_confirmadas) AS decimal) \* 100)
+    (CAST(SUM(reservas_confirmadas) AS decimal) * 100)
 
-&#x20;       / SUM(capacidad\_total) AS porcentaje\_ocupacion
+        / SUM(capacidad_total) AS porcentaje_ocupacion
 
-FROM ocupacion\_por\_ruta\_mes
+FROM ocupacion_por_ruta_mes
 
 WHERE origen = 'GUA'
 
-&#x20; AND destino = 'MEX'
+  AND destino = 'MEX'
 
-&#x20; AND anio\_mes = '2026-01'
+  AND anio_mes = '2026-01'
 
-&#x20; AND fecha\_salida >= '2026-01-01T00:00:00Z'
+  AND fecha_salida >= '2026-01-01T00:00:00Z'
 
-&#x20; AND fecha\_salida <= '2026-01-31T23:59:59Z';
+  AND fecha_salida <= '2026-01-31T23:59:59Z';
 
 ```
 
@@ -1278,11 +1278,11 @@ Ocupación:            66.67 %
 
 
 
-\---
+---
 
 
 
-\# 25. Consulta Q5 - Top N de vuelos por ingresos
+# 25. Consulta Q5 - Top N de vuelos por ingresos
 
 
 
@@ -1302,23 +1302,23 @@ Ejemplo:
 
 SELECT
 
-&#x20;   codigo\_vuelo,
+    codigo_vuelo,
 
-&#x20;   fecha\_salida,
+    fecha_salida,
 
-&#x20;   origen,
+    origen,
 
-&#x20;   destino,
+    destino,
 
-&#x20;   ingreso\_total
+    ingreso_total
 
-FROM ranking\_ingresos\_por\_periodo
+FROM ranking_ingresos_por_periodo
 
-WHERE fecha\_inicio = '2026-01-01'
+WHERE fecha_inicio = '2026-01-01'
 
-&#x20; AND fecha\_fin = '2026-01-31'
+  AND fecha_fin = '2026-01-31'
 
-ORDER BY ingreso\_total DESC
+ORDER BY ingreso_total DESC
 
 LIMIT 10;
 
@@ -1342,11 +1342,11 @@ Durante la carga utilizada en el proyecto varios vuelos obtienen el mismo ingres
 
 
 
-\---
+---
 
 
 
-\# 26. Ejecutar el archivo de consultas
+# 26. Ejecutar el archivo de consultas
 
 
 
@@ -1356,7 +1356,7 @@ También es posible ejecutar el archivo completo mediante:
 
 ```powershell
 
-Get-Content -Raw .\\cql\\03\_queries.cql | docker exec -i cassandra1 cqlsh
+Get-Content -Raw .\cql\03_queries.cql | docker exec -i cassandra1 cqlsh
 
 ```
 
@@ -1366,11 +1366,11 @@ Debe considerarse que el archivo también contiene una demostración de TTL.
 
 
 
-\---
+---
 
 
 
-\# 27. Uso de TTL
+# 27. Uso de TTL
 
 
 
@@ -1400,35 +1400,35 @@ Ejemplo:
 
 ```sql
 
-INSERT INTO reservas\_por\_id (
+INSERT INTO reservas_por_id (
 
-&#x20;   reserva\_id,
+    reserva_id,
 
-&#x20;   pasajero\_id,
+    pasajero_id,
 
-&#x20;   vuelo\_id,
+    vuelo_id,
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   fecha\_reserva,
+    fecha_reserva,
 
-&#x20;   estado
+    estado
 
 )
 
 VALUES (
 
-&#x20;   99999999-9999-4999-8999-999999999999,
+    99999999-9999-4999-8999-999999999999,
 
-&#x20;   af65cd22-ae00-5a4a-8268-45d22029b352,
+    af65cd22-ae00-5a4a-8268-45d22029b352,
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130,
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130,
 
-&#x20;   'TTL-TEST',
+    'TTL-TEST',
 
-&#x20;   toTimestamp(now()),
+    toTimestamp(now()),
 
-&#x20;   'EXPIRABLE'
+    'EXPIRABLE'
 
 )
 
@@ -1438,11 +1438,11 @@ USING TTL 30;
 
 
 
-\---
+---
 
 
 
-\# 28. Consultar el TTL restante
+# 28. Consultar el TTL restante
 
 
 
@@ -1454,19 +1454,19 @@ Ejecutar:
 
 SELECT
 
-&#x20;   reserva\_id,
+    reserva_id,
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   estado,
+    estado,
 
-&#x20;   TTL(estado) AS ttl\_restante
+    TTL(estado) AS ttl_restante
 
-FROM reservas\_por\_id
+FROM reservas_por_id
 
-WHERE reserva\_id =
+WHERE reserva_id =
 
-&#x20;   99999999-9999-4999-8999-999999999999;
+    99999999-9999-4999-8999-999999999999;
 
 ```
 
@@ -1478,7 +1478,7 @@ El valor de:
 
 ```text
 
-ttl\_restante
+ttl_restante
 
 ```
 
@@ -1500,11 +1500,11 @@ Una vez transcurridos los 30 segundos la consulta debe devolver:
 
 
 
-\---
+---
 
 
 
-\# 29. Pruebas de consistencia
+# 29. Pruebas de consistencia
 
 
 
@@ -1514,7 +1514,7 @@ El script:
 
 ```text
 
-scripts/04\_prueba\_tolerancia.py
+scripts/04_prueba_tolerancia.py
 
 ```
 
@@ -1556,11 +1556,11 @@ Latencia máxima
 
 
 
-\---
+---
 
 
 
-\# 30. Prueba con tres nodos activos
+# 30. Prueba con tres nodos activos
 
 
 
@@ -1598,7 +1598,7 @@ Ejecutar:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -u scripts\\04\_prueba\_tolerancia.py --escenario 3\_nodos
+.\.venv\Scripts\python.exe -u scripts\04_prueba_tolerancia.py --escenario 3_nodos
 
 ```
 
@@ -1620,11 +1620,11 @@ ALL    -> funcione
 
 
 
-\---
+---
 
 
 
-\# 31. Simular la caída de un nodo
+# 31. Simular la caída de un nodo
 
 
 
@@ -1668,11 +1668,11 @@ cassandra3 -> DN
 
 
 
-\---
+---
 
 
 
-\# 32. Ejecutar prueba con un nodo caído
+# 32. Ejecutar prueba con un nodo caído
 
 
 
@@ -1682,7 +1682,7 @@ Ejecutar:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -u scripts\\04\_prueba\_tolerancia.py --escenario 1\_nodo\_caido
+.\.venv\Scripts\python.exe -u scripts\04_prueba_tolerancia.py --escenario 1_nodo_caido
 
 ```
 
@@ -1712,9 +1712,9 @@ El error esperado para `ALL` es similar a:
 
 Cannot achieve consistency level ALL
 
-required\_replicas: 3
+required_replicas: 3
 
-alive\_replicas: 2
+alive_replicas: 2
 
 ```
 
@@ -1724,11 +1724,11 @@ Este comportamiento es correcto.
 
 
 
-\---
+---
 
 
 
-\# 33. Recuperar el nodo
+# 33. Recuperar el nodo
 
 
 
@@ -1776,11 +1776,11 @@ UN
 
 
 
-\---
+---
 
 
 
-\# 34. Verificar recuperación
+# 34. Verificar recuperación
 
 
 
@@ -1790,7 +1790,7 @@ Ejecutar nuevamente:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -u scripts\\04\_prueba\_tolerancia.py --escenario cluster\_recuperado
+.\.venv\Scripts\python.exe -u scripts\04_prueba_tolerancia.py --escenario cluster_recuperado
 
 ```
 
@@ -1812,11 +1812,11 @@ ALL    -> funciona
 
 
 
-\---
+---
 
 
 
-\# 35. Detener el sistema
+# 35. Detener el sistema
 
 
 
@@ -1836,11 +1836,11 @@ Los volúmenes persistentes conservarán los datos.
 
 
 
-\---
+---
 
 
 
-\# 36. Reiniciar el sistema
+# 36. Reiniciar el sistema
 
 
 
@@ -1868,11 +1868,11 @@ docker exec cassandra1 nodetool status aerolinea
 
 
 
-\---
+---
 
 
 
-\# 37. Eliminar el entorno Docker
+# 37. Eliminar el entorno Docker
 
 
 
@@ -1908,11 +1908,11 @@ si se desean conservar los datos, debido a que la opción `-v` elimina también 
 
 
 
-\---
+---
 
 
 
-\# 38. Restaurar el proyecto desde cero
+# 38. Restaurar el proyecto desde cero
 
 
 
@@ -1922,45 +1922,45 @@ Si el proyecto se ejecuta en un equipo nuevo, el procedimiento general es:
 
 ```text
 
-1\. Instalar Docker Desktop.
+1. Instalar Docker Desktop.
 
-2\. Instalar Python 3.12.
+2. Instalar Python 3.12.
 
-3\. Clonar el repositorio.
+3. Clonar el repositorio.
 
-4\. Abrir PowerShell en "Primer Proyecto".
+4. Abrir PowerShell en "Primer Proyecto".
 
-5\. Ejecutar docker compose up -d.
+5. Ejecutar docker compose up -d.
 
-6\. Esperar que los tres nodos estén UN.
+6. Esperar que los tres nodos estén UN.
 
-7\. Ejecutar cql/01\_keyspace.cql.
+7. Ejecutar cql/01_keyspace.cql.
 
-8\. Ejecutar cql/02\_schema.cql.
+8. Ejecutar cql/02_schema.cql.
 
-9\. Crear el entorno virtual Python.
+9. Crear el entorno virtual Python.
 
-10\. Instalar requirements.txt.
+10. Instalar requirements.txt.
 
-11\. Verificar conexión con 01\_verificar\_conexion.py.
+11. Verificar conexión con 01_verificar_conexion.py.
 
-12\. Ejecutar 03\_carga\_masiva.py con 100000 reservas.
+12. Ejecutar 03_carga_masiva.py con 100000 reservas.
 
-13\. Ejecutar las consultas de cql/03\_queries.cql.
+13. Ejecutar las consultas de cql/03_queries.cql.
 
 ```
 
 
 
-\---
+---
 
 
 
-\# 39. Problemas comunes
+# 39. Problemas comunes
 
 
 
-\## Cassandra todavía no está listo
+## Cassandra todavía no está listo
 
 
 
@@ -1994,11 +1994,11 @@ docker exec cassandra1 nodetool status
 
 
 
-\---
+---
 
 
 
-\## Python no puede utilizar cassandra-driver
+## Python no puede utilizar cassandra-driver
 
 
 
@@ -2032,17 +2032,17 @@ Mediante:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -m pip install pyasyncore
+.\.venv\Scripts\python.exe -m pip install pyasyncore
 
 ```
 
 
 
-\---
+---
 
 
 
-\## ALL falla durante la prueba de nodo caído
+## ALL falla durante la prueba de nodo caído
 
 
 
@@ -2082,11 +2082,11 @@ Si únicamente existen dos nodos activos, Cassandra no puede satisfacer ese nive
 
 
 
-\---
+---
 
 
 
-\## Warning durante COUNT(\*)
+## Warning durante COUNT(*)
 
 
 
@@ -2110,11 +2110,11 @@ Las consultas Q1-Q5 utilizan sus correspondientes partition keys y no requieren 
 
 
 
-\---
+---
 
 
 
-\# 40. Archivos de evidencia
+# 40. Archivos de evidencia
 
 
 
@@ -2130,7 +2130,7 @@ evidencias/carga/
 
 evidencias/consultas/
 
-evidencias/tolerancia\_fallos/
+evidencias/tolerancia_fallos/
 
 ```
 
@@ -2140,31 +2140,31 @@ Estos archivos permiten verificar:
 
 
 
-\- Estado de los tres nodos.
+- Estado de los tres nodos.
 
-\- Replication Factor.
+- Replication Factor.
 
-\- Schema Agreement.
+- Schema Agreement.
 
-\- Carga de 100,000 reservas.
+- Carga de 100,000 reservas.
 
-\- Ejecución de las cinco consultas.
+- Ejecución de las cinco consultas.
 
-\- Funcionamiento de TTL.
+- Funcionamiento de TTL.
 
-\- Caída de un nodo.
+- Caída de un nodo.
 
-\- Comportamiento de ONE, QUORUM y ALL.
+- Comportamiento de ONE, QUORUM y ALL.
 
-\- Recuperación del clúster.
-
-
-
-\---
+- Recuperación del clúster.
 
 
 
-\# 41. Consideraciones finales
+---
+
+
+
+# 41. Consideraciones finales
 
 
 
@@ -2186,7 +2186,7 @@ La carga masiva puede volver a ejecutarse indicando otra cantidad mediante:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe scripts\\03\_carga\_masiva.py --reservas CANTIDAD
+.\.venv\Scripts\python.exe scripts\03_carga_masiva.py --reservas CANTIDAD
 
 ```
 
@@ -2197,4 +2197,5 @@ Debe recordarse que el script limpia las tablas antes de realizar cada nueva car
 
 
 Para la entrega final se recomienda mantener los tres nodos en estado `UN`.
+
 

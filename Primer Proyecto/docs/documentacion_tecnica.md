@@ -1,30 +1,30 @@
-\# DOCUMENTACIÓN TÉCNICA
+﻿# DOCUMENTACIÓN TÉCNICA
 
 
 
-\## Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
+## Sistema de Gestión de Reservas y Boletos Aéreos con Apache Cassandra
 
 
 
-\*\*Universidad de San Carlos de Guatemala\*\*  
+**Universidad de San Carlos de Guatemala**  
 
-\*\*Facultad de Ingeniería\*\*  
+**Facultad de Ingeniería**  
 
-\*\*Ingeniería en Ciencias y Sistemas\*\*  
+**Ingeniería en Ciencias y Sistemas**  
 
-\*\*Curso:\*\* Sistemas de Bases de Datos 2  
+**Curso:** Sistemas de Bases de Datos 2  
 
-\*\*Proyecto:\*\* Primer Proyecto  
+**Proyecto:** Primer Proyecto  
 
-\*\*Carné:\*\* 202202072  
-
-
-
-\---
+**Carné:** 202202072  
 
 
 
-\# 1. Introducción
+---
+
+
+
+# 1. Introducción
 
 
 
@@ -44,15 +44,15 @@ El sistema contempla información relacionada con pasajeros, aeronaves, vuelos, 
 
 
 
-\---
+---
 
 
 
-\# 2. Objetivos
+# 2. Objetivos
 
 
 
-\## 2.1 Objetivo general
+## 2.1 Objetivo general
 
 
 
@@ -60,37 +60,37 @@ Diseñar e implementar una base de datos distribuida en Apache Cassandra para ad
 
 
 
-\## 2.2 Objetivos específicos
+## 2.2 Objetivos específicos
 
 
 
-\- Implementar un clúster Apache Cassandra compuesto por tres nodos.
+- Implementar un clúster Apache Cassandra compuesto por tres nodos.
 
-\- Utilizar una estrategia de replicación adecuada para un entorno distribuido.
+- Utilizar una estrategia de replicación adecuada para un entorno distribuido.
 
-\- Diseñar tablas Cassandra optimizadas para las consultas requeridas.
+- Diseñar tablas Cassandra optimizadas para las consultas requeridas.
 
-\- Evitar el uso de JOIN y ALLOW FILTERING en las consultas principales.
+- Evitar el uso de JOIN y ALLOW FILTERING en las consultas principales.
 
-\- Cargar al menos 100,000 reservas mediante scripts desarrollados en Python.
+- Cargar al menos 100,000 reservas mediante scripts desarrollados en Python.
 
-\- Utilizar Batch Writes durante el proceso de carga.
+- Utilizar Batch Writes durante el proceso de carga.
 
-\- Implementar contadores y tablas de agregación para consultas estadísticas.
+- Implementar contadores y tablas de agregación para consultas estadísticas.
 
-\- Implementar TTL para reservas temporales.
+- Implementar TTL para reservas temporales.
 
-\- Evaluar los niveles de consistencia ONE, QUORUM y ALL.
+- Evaluar los niveles de consistencia ONE, QUORUM y ALL.
 
-\- Simular la caída y recuperación de un nodo del clúster.
-
-
-
-\---
+- Simular la caída y recuperación de un nodo del clúster.
 
 
 
-\# 3. Tecnologías utilizadas
+---
+
+
+
+# 3. Tecnologías utilizadas
 
 
 
@@ -98,23 +98,23 @@ La solución fue desarrollada utilizando las siguientes tecnologías:
 
 
 
-\- Apache Cassandra 4.1.12.
+- Apache Cassandra 4.1.12.
 
-\- Docker.
+- Docker.
 
-\- Docker Compose.
+- Docker Compose.
 
-\- Python 3.12.
+- Python 3.12.
 
-\- cassandra-driver 3.30.1.
+- cassandra-driver 3.30.1.
 
-\- Faker 40.39.0.
+- Faker 40.39.0.
 
-\- PowerShell.
+- PowerShell.
 
-\- Git.
+- Git.
 
-\- GitHub.
+- GitHub.
 
 
 
@@ -122,11 +122,11 @@ El clúster Cassandra se ejecuta mediante contenedores Docker, lo que permite re
 
 
 
-\---
+---
 
 
 
-\# 4. Arquitectura general
+# 4. Arquitectura general
 
 
 
@@ -138,11 +138,11 @@ Los nodos son:
 
 
 
-\- cassandra1.
+- cassandra1.
 
-\- cassandra2.
+- cassandra2.
 
-\- cassandra3.
+- cassandra3.
 
 
 
@@ -192,7 +192,7 @@ La comunicación interna entre los nodos se realiza mediante la red Docker:
 
 ```text
 
-primerproyecto\_cassandra\_net
+primerproyecto_cassandra_net
 
 ```
 
@@ -202,11 +202,11 @@ Cada nodo posee un volumen independiente para mantener la persistencia de sus da
 
 
 
-\---
+---
 
 
 
-\# 5. Modelo conceptual
+# 5. Modelo conceptual
 
 
 
@@ -214,17 +214,17 @@ El sistema contempla las siguientes entidades principales:
 
 
 
-\- Pasajero.
+- Pasajero.
 
-\- Aeronave.
+- Aeronave.
 
-\- Vuelo.
+- Vuelo.
 
-\- Asiento.
+- Asiento.
 
-\- Reserva.
+- Reserva.
 
-\- Pago.
+- Pago.
 
 
 
@@ -232,17 +232,17 @@ Las relaciones principales son:
 
 
 
-\- Un pasajero puede realizar múltiples reservas.
+- Un pasajero puede realizar múltiples reservas.
 
-\- Una aeronave puede operar múltiples vuelos.
+- Una aeronave puede operar múltiples vuelos.
 
-\- Un vuelo contiene múltiples asientos.
+- Un vuelo contiene múltiples asientos.
 
-\- Un vuelo recibe múltiples reservas.
+- Un vuelo recibe múltiples reservas.
 
-\- Una reserva asigna un asiento.
+- Una reserva asigna un asiento.
 
-\- Una reserva posee información asociada de pago.
+- Una reserva posee información asociada de pago.
 
 
 
@@ -252,7 +252,7 @@ El modelo conceptual completo se encuentra en:
 
 ```text
 
-diagramas/modelo\_er\_conceptual.pdf
+diagramas/modelo_er_conceptual.pdf
 
 ```
 
@@ -264,7 +264,7 @@ y su código fuente Mermaid en:
 
 ```text
 
-diagramas/modelo\_er\_conceptual.mmd
+diagramas/modelo_er_conceptual.mmd
 
 ```
 
@@ -274,11 +274,11 @@ Este modelo representa el dominio del sistema. Sin embargo, no se utiliza direct
 
 
 
-\---
+---
 
 
 
-\# 6. Diseño Query-Driven
+# 6. Diseño Query-Driven
 
 
 
@@ -314,7 +314,7 @@ El documento detallado del análisis Query-Driven se encuentra en:
 
 ```text
 
-docs/diseno\_query\_driven.md
+docs/diseno_query_driven.md
 
 ```
 
@@ -326,17 +326,17 @@ El modelo lógico Cassandra se encuentra en:
 
 ```text
 
-diagramas/modelo\_logico\_cassandra.pdf
+diagramas/modelo_logico_cassandra.pdf
 
 ```
 
 
 
-\---
+---
 
 
 
-\# 7. Keyspace
+# 7. Keyspace
 
 
 
@@ -362,13 +362,13 @@ CREATE KEYSPACE IF NOT EXISTS aerolinea
 
 WITH replication = {
 
-&#x20;   'class': 'NetworkTopologyStrategy',
+    'class': 'NetworkTopologyStrategy',
 
-&#x20;   'datacenter1': 3
+    'datacenter1': 3
 
 }
 
-AND durable\_writes = true;
+AND durable_writes = true;
 
 ```
 
@@ -418,11 +418,11 @@ obteniéndose un ownership efectivo de 100% para los tres nodos.
 
 
 
-\---
+---
 
 
 
-\# 8. Tablas del sistema
+# 8. Tablas del sistema
 
 
 
@@ -430,7 +430,7 @@ La implementación contiene 11 tablas.
 
 
 
-\## 8.1 Tablas operativas
+## 8.1 Tablas operativas
 
 
 
@@ -440,17 +440,17 @@ Las tablas base utilizadas para representar las principales entidades son:
 
 ```text
 
-pasajeros\_por\_id
+pasajeros_por_id
 
-aeronaves\_por\_id
+aeronaves_por_id
 
-vuelos\_por\_id
+vuelos_por_id
 
-asientos\_por\_vuelo
+asientos_por_vuelo
 
-reservas\_por\_id
+reservas_por_id
 
-pagos\_por\_reserva
+pagos_por_reserva
 
 ```
 
@@ -460,7 +460,7 @@ Estas tablas permiten mantener información operativa accesible mediante sus ide
 
 
 
-\## 8.2 Tablas Query-Driven
+## 8.2 Tablas Query-Driven
 
 
 
@@ -470,15 +470,15 @@ Las cinco consultas principales utilizan las siguientes tablas:
 
 ```text
 
-Q1 -> disponibilidad\_asientos\_por\_vuelo\_clase
+Q1 -> disponibilidad_asientos_por_vuelo_clase
 
-Q2 -> historial\_reservas\_por\_pasajero
+Q2 -> historial_reservas_por_pasajero
 
-Q3 -> manifiesto\_por\_vuelo
+Q3 -> manifiesto_por_vuelo
 
-Q4 -> ocupacion\_por\_ruta\_mes
+Q4 -> ocupacion_por_ruta_mes
 
-Q5 -> ranking\_ingresos\_por\_periodo
+Q5 -> ranking_ingresos_por_periodo
 
 ```
 
@@ -488,15 +488,15 @@ En Cassandra la duplicación de información es intencional y permite responder 
 
 
 
-\---
+---
 
 
 
-\# 9. Diseño de claves
+# 9. Diseño de claves
 
 
 
-\## 9.1 Q1 - Disponibilidad de asientos
+## 9.1 Q1 - Disponibilidad de asientos
 
 
 
@@ -506,7 +506,7 @@ Tabla:
 
 ```text
 
-disponibilidad\_asientos\_por\_vuelo\_clase
+disponibilidad_asientos_por_vuelo_clase
 
 ```
 
@@ -518,7 +518,7 @@ Clave primaria:
 
 ```text
 
-PRIMARY KEY ((vuelo\_id), clase)
+PRIMARY KEY ((vuelo_id), clase)
 
 ```
 
@@ -530,7 +530,7 @@ Donde:
 
 ```text
 
-Partition Key = vuelo\_id
+Partition Key = vuelo_id
 
 Clustering Column = clase
 
@@ -564,11 +564,11 @@ Esto evita realizar un COUNT sobre todos los asientos cada vez que se consulta l
 
 
 
-\---
+---
 
 
 
-\## 9.2 Q2 - Historial del pasajero
+## 9.2 Q2 - Historial del pasajero
 
 
 
@@ -578,7 +578,7 @@ Tabla:
 
 ```text
 
-historial\_reservas\_por\_pasajero
+historial_reservas_por_pasajero
 
 ```
 
@@ -590,7 +590,7 @@ Clave primaria:
 
 ```text
 
-PRIMARY KEY ((pasajero\_id), fecha\_salida, reserva\_id)
+PRIMARY KEY ((pasajero_id), fecha_salida, reserva_id)
 
 ```
 
@@ -602,9 +602,9 @@ Orden:
 
 ```text
 
-fecha\_salida DESC
+fecha_salida DESC
 
-reserva\_id ASC
+reserva_id ASC
 
 ```
 
@@ -616,7 +616,7 @@ La partition key es:
 
 ```text
 
-pasajero\_id
+pasajero_id
 
 ```
 
@@ -632,7 +632,7 @@ La columna:
 
 ```text
 
-fecha\_salida
+fecha_salida
 
 ```
 
@@ -644,9 +644,9 @@ permite realizar búsquedas por rango mediante:
 
 ```sql
 
-fecha\_salida >= fecha\_inicial
+fecha_salida >= fecha_inicial
 
-fecha\_salida <= fecha\_final
+fecha_salida <= fecha_final
 
 ```
 
@@ -656,11 +656,11 @@ La información de vuelo, asiento, reserva y pago se encuentra desnormalizada de
 
 
 
-\---
+---
 
 
 
-\## 9.3 Q3 - Manifiesto del vuelo
+## 9.3 Q3 - Manifiesto del vuelo
 
 
 
@@ -670,7 +670,7 @@ Tabla:
 
 ```text
 
-manifiesto\_por\_vuelo
+manifiesto_por_vuelo
 
 ```
 
@@ -682,7 +682,7 @@ Clave primaria:
 
 ```text
 
-PRIMARY KEY ((vuelo\_id), fila\_asiento, letra\_asiento)
+PRIMARY KEY ((vuelo_id), fila_asiento, letra_asiento)
 
 ```
 
@@ -694,9 +694,9 @@ Orden:
 
 ```text
 
-fila\_asiento ASC
+fila_asiento ASC
 
-letra\_asiento ASC
+letra_asiento ASC
 
 ```
 
@@ -708,7 +708,7 @@ La partition key es:
 
 ```text
 
-vuelo\_id
+vuelo_id
 
 ```
 
@@ -720,9 +720,9 @@ Los asientos fueron separados en:
 
 ```text
 
-fila\_asiento
+fila_asiento
 
-letra\_asiento
+letra_asiento
 
 ```
 
@@ -776,11 +776,11 @@ Mientras que la separación permite mantener:
 
 
 
-\---
+---
 
 
 
-\## 9.4 Q4 - Ocupación por ruta
+## 9.4 Q4 - Ocupación por ruta
 
 
 
@@ -790,7 +790,7 @@ Tabla:
 
 ```text
 
-ocupacion\_por\_ruta\_mes
+ocupacion_por_ruta_mes
 
 ```
 
@@ -802,7 +802,7 @@ Partition key compuesta:
 
 ```text
 
-(origen, destino, anio\_mes)
+(origen, destino, anio_mes)
 
 ```
 
@@ -814,9 +814,9 @@ Clustering columns:
 
 ```text
 
-fecha\_salida
+fecha_salida
 
-vuelo\_id
+vuelo_id
 
 ```
 
@@ -828,7 +828,7 @@ La columna:
 
 ```text
 
-anio\_mes
+anio_mes
 
 ```
 
@@ -848,9 +848,9 @@ La tabla mantiene los contadores:
 
 ```text
 
-reservas\_confirmadas
+reservas_confirmadas
 
-capacidad\_total
+capacidad_total
 
 ```
 
@@ -864,11 +864,11 @@ Con estos valores puede calcularse el porcentaje de ocupación directamente en C
 
 
 
-\---
+---
 
 
 
-\## 9.5 Q5 - Ranking por ingresos
+## 9.5 Q5 - Ranking por ingresos
 
 
 
@@ -878,7 +878,7 @@ Tabla:
 
 ```text
 
-ranking\_ingresos\_por\_periodo
+ranking_ingresos_por_periodo
 
 ```
 
@@ -890,7 +890,7 @@ Partition key:
 
 ```text
 
-(fecha\_inicio, fecha\_fin)
+(fecha_inicio, fecha_fin)
 
 ```
 
@@ -902,9 +902,9 @@ Clustering columns:
 
 ```text
 
-ingreso\_total DESC
+ingreso_total DESC
 
-vuelo\_id ASC
+vuelo_id ASC
 
 ```
 
@@ -914,7 +914,7 @@ El ingreso total de cada vuelo se materializa previamente.
 
 
 
-Gracias al orden descendente de `ingreso\_total`, Cassandra puede ejecutar:
+Gracias al orden descendente de `ingreso_total`, Cassandra puede ejecutar:
 
 
 
@@ -934,11 +934,11 @@ No es necesario ordenar los resultados en Python.
 
 
 
-\---
+---
 
 
 
-\# 10. Implementación del clúster
+# 10. Implementación del clúster
 
 
 
@@ -1022,11 +1022,11 @@ Los tres nodos compartieron la misma versión del esquema, confirmando Schema Ag
 
 
 
-\---
+---
 
 
 
-\# 11. Replicación
+# 11. Replicación
 
 
 
@@ -1112,11 +1112,11 @@ También se realizó una prueba escribiendo un registro mediante `cassandra1` y 
 
 
 
-\---
+---
 
 
 
-\# 12. Carga masiva de datos
+# 12. Carga masiva de datos
 
 
 
@@ -1140,7 +1140,7 @@ El script principal es:
 
 ```text
 
-scripts/03\_carga\_masiva.py
+scripts/03_carga_masiva.py
 
 ```
 
@@ -1152,7 +1152,7 @@ La ejecución utilizada fue:
 
 ```powershell
 
-.\\.venv\\Scripts\\python.exe -u scripts\\03\_carga\_masiva.py --reservas 100000
+.\.venv\Scripts\python.exe -u scripts\03_carga_masiva.py --reservas 100000
 
 ```
 
@@ -1218,11 +1218,11 @@ El tiempo medido para la carga definitiva fue:
 
 
 
-\---
+---
 
 
 
-\# 13. Batch Writes
+# 13. Batch Writes
 
 
 
@@ -1234,9 +1234,9 @@ La carga de reservas utilizó:
 
 BatchStatement(
 
-&#x20;   batch\_type=BatchType.UNLOGGED,
+    batch_type=BatchType.UNLOGGED,
 
-&#x20;   consistency\_level=ConsistencyLevel.ONE
+    consistency_level=ConsistencyLevel.ONE
 
 )
 
@@ -1262,13 +1262,13 @@ Cada reserva genera cuatro escrituras:
 
 ```text
 
-1\. reservas\_por\_id
+1. reservas_por_id
 
-2\. pagos\_por\_reserva
+2. pagos_por_reserva
 
-3\. historial\_reservas\_por\_pasajero
+3. historial_reservas_por_pasajero
 
-4\. manifiesto\_por\_vuelo
+4. manifiesto_por_vuelo
 
 ```
 
@@ -1302,11 +1302,11 @@ Se utilizaron batches pequeños para evitar construir lotes excesivamente grande
 
 
 
-\---
+---
 
 
 
-\# 14. Consulta Q1 - Disponibilidad por clase
+# 14. Consulta Q1 - Disponibilidad por clase
 
 
 
@@ -1318,17 +1318,17 @@ La consulta utilizada fue:
 
 SELECT
 
-&#x20;   clase,
+    clase,
 
-&#x20;   disponibles,
+    disponibles,
 
-&#x20;   ocupados
+    ocupados
 
-FROM disponibilidad\_asientos\_por\_vuelo\_clase
+FROM disponibilidad_asientos_por_vuelo_clase
 
-WHERE vuelo\_id =
+WHERE vuelo_id =
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
 
 ```
 
@@ -1366,15 +1366,15 @@ Capacidad:  120
 
 
 
-La consulta utiliza directamente la partition key `vuelo\_id` y no realiza conteos en tiempo de lectura.
+La consulta utiliza directamente la partition key `vuelo_id` y no realiza conteos en tiempo de lectura.
 
 
 
-\---
+---
 
 
 
-\# 15. Consulta Q2 - Historial de pasajero
+# 15. Consulta Q2 - Historial de pasajero
 
 
 
@@ -1414,33 +1414,33 @@ Consulta:
 
 SELECT
 
-&#x20;   fecha\_salida,
+    fecha_salida,
 
-&#x20;   codigo\_vuelo,
+    codigo_vuelo,
 
-&#x20;   aeropuerto\_origen,
+    aeropuerto_origen,
 
-&#x20;   aeropuerto\_destino,
+    aeropuerto_destino,
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   clase,
+    clase,
 
-&#x20;   estado\_reserva,
+    estado_reserva,
 
-&#x20;   estado\_pago,
+    estado_pago,
 
-&#x20;   monto\_pago
+    monto_pago
 
-FROM historial\_reservas\_por\_pasajero
+FROM historial_reservas_por_pasajero
 
-WHERE pasajero\_id =
+WHERE pasajero_id =
 
-&#x20;   af65cd22-ae00-5a4a-8268-45d22029b352
+    af65cd22-ae00-5a4a-8268-45d22029b352
 
-&#x20; AND fecha\_salida >= '2026-01-10T00:00:00Z'
+  AND fecha_salida >= '2026-01-10T00:00:00Z'
 
-&#x20; AND fecha\_salida <= '2026-01-26T23:59:59Z';
+  AND fecha_salida <= '2026-01-26T23:59:59Z';
 
 ```
 
@@ -1466,11 +1466,11 @@ No se utilizó JOIN ni ALLOW FILTERING.
 
 
 
-\---
+---
 
 
 
-\# 16. Consulta Q3 - Manifiesto de vuelo
+# 16. Consulta Q3 - Manifiesto de vuelo
 
 
 
@@ -1482,23 +1482,23 @@ Consulta:
 
 SELECT
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   clase,
+    clase,
 
-&#x20;   nombre\_pasajero,
+    nombre_pasajero,
 
-&#x20;   documento\_identificacion,
+    documento_identificacion,
 
-&#x20;   estado\_reserva,
+    estado_reserva,
 
-&#x20;   estado\_pago
+    estado_pago
 
-FROM manifiesto\_por\_vuelo
+FROM manifiesto_por_vuelo
 
-WHERE vuelo\_id =
+WHERE vuelo_id =
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130;
 
 ```
 
@@ -1546,11 +1546,11 @@ La información del pasajero, reserva y pago se encuentra desnormalizada dentro 
 
 
 
-\---
+---
 
 
 
-\# 17. Consulta Q4 - Porcentaje de ocupación
+# 17. Consulta Q4 - Porcentaje de ocupación
 
 
 
@@ -1578,25 +1578,25 @@ Consulta:
 
 SELECT
 
-&#x20;   SUM(reservas\_confirmadas) AS reservas\_confirmadas,
+    SUM(reservas_confirmadas) AS reservas_confirmadas,
 
-&#x20;   SUM(capacidad\_total) AS capacidad\_total,
+    SUM(capacidad_total) AS capacidad_total,
 
-&#x20;   (CAST(SUM(reservas\_confirmadas) AS decimal) \* 100)
+    (CAST(SUM(reservas_confirmadas) AS decimal) * 100)
 
-&#x20;       / SUM(capacidad\_total) AS porcentaje\_ocupacion
+        / SUM(capacidad_total) AS porcentaje_ocupacion
 
-FROM ocupacion\_por\_ruta\_mes
+FROM ocupacion_por_ruta_mes
 
 WHERE origen = 'GUA'
 
-&#x20; AND destino = 'MEX'
+  AND destino = 'MEX'
 
-&#x20; AND anio\_mes = '2026-01'
+  AND anio_mes = '2026-01'
 
-&#x20; AND fecha\_salida >= '2026-01-01T00:00:00Z'
+  AND fecha_salida >= '2026-01-01T00:00:00Z'
 
-&#x20; AND fecha\_salida <= '2026-01-31T23:59:59Z';
+  AND fecha_salida <= '2026-01-31T23:59:59Z';
 
 ```
 
@@ -1622,11 +1622,11 @@ Los contadores necesarios se encuentran previamente materializados en la tabla.
 
 
 
-\---
+---
 
 
 
-\# 18. Consulta Q5 - Top N por ingresos
+# 18. Consulta Q5 - Top N por ingresos
 
 
 
@@ -1642,23 +1642,23 @@ Consulta:
 
 SELECT
 
-&#x20;   codigo\_vuelo,
+    codigo_vuelo,
 
-&#x20;   fecha\_salida,
+    fecha_salida,
 
-&#x20;   origen,
+    origen,
 
-&#x20;   destino,
+    destino,
 
-&#x20;   ingreso\_total
+    ingreso_total
 
-FROM ranking\_ingresos\_por\_periodo
+FROM ranking_ingresos_por_periodo
 
-WHERE fecha\_inicio = '2026-01-01'
+WHERE fecha_inicio = '2026-01-01'
 
-&#x20; AND fecha\_fin = '2026-01-31'
+  AND fecha_fin = '2026-01-31'
 
-ORDER BY ingreso\_total DESC
+ORDER BY ingreso_total DESC
 
 LIMIT 10;
 
@@ -1698,7 +1698,7 @@ Durante la generación de datos se utilizó una distribución uniforme de capaci
 
 
 
-Cuando dos vuelos poseen el mismo ingreso, Cassandra utiliza `vuelo\_id ASC` como segundo criterio de clustering.
+Cuando dos vuelos poseen el mismo ingreso, Cassandra utiliza `vuelo_id ASC` como segundo criterio de clustering.
 
 
 
@@ -1706,11 +1706,11 @@ El ranking no requiere realizar ordenamiento en la aplicación cliente.
 
 
 
-\---
+---
 
 
 
-\# 19. TTL
+# 19. TTL
 
 
 
@@ -1724,35 +1724,35 @@ La inserción utilizada fue:
 
 ```sql
 
-INSERT INTO reservas\_por\_id (
+INSERT INTO reservas_por_id (
 
-&#x20;   reserva\_id,
+    reserva_id,
 
-&#x20;   pasajero\_id,
+    pasajero_id,
 
-&#x20;   vuelo\_id,
+    vuelo_id,
 
-&#x20;   numero\_asiento,
+    numero_asiento,
 
-&#x20;   fecha\_reserva,
+    fecha_reserva,
 
-&#x20;   estado
+    estado
 
 )
 
 VALUES (
 
-&#x20;   99999999-9999-4999-8999-999999999999,
+    99999999-9999-4999-8999-999999999999,
 
-&#x20;   af65cd22-ae00-5a4a-8268-45d22029b352,
+    af65cd22-ae00-5a4a-8268-45d22029b352,
 
-&#x20;   7738e6e4-6f78-5a6a-9adc-1f33c41fe130,
+    7738e6e4-6f78-5a6a-9adc-1f33c41fe130,
 
-&#x20;   'TTL-TEST',
+    'TTL-TEST',
 
-&#x20;   toTimestamp(now()),
+    toTimestamp(now()),
 
-&#x20;   'EXPIRABLE'
+    'EXPIRABLE'
 
 )
 
@@ -1818,11 +1818,11 @@ El TTL de 30 segundos se utilizó únicamente con fines demostrativos. En un sis
 
 
 
-\---
+---
 
 
 
-\# 20. Consistency Levels
+# 20. Consistency Levels
 
 
 
@@ -1862,11 +1862,11 @@ Cada nivel fue probado 20 veces para obtener métricas de disponibilidad y laten
 
 
 
-\---
+---
 
 
 
-\# 21. Prueba con tres nodos disponibles
+# 21. Prueba con tres nodos disponibles
 
 
 
@@ -1894,11 +1894,11 @@ Las pequeñas diferencias de latencia observadas corresponden a una prueba ejecu
 
 
 
-\---
+---
 
 
 
-\# 22. Simulación de falla
+# 22. Simulación de falla
 
 
 
@@ -1968,11 +1968,11 @@ N = Normal
 
 
 
-\---
+---
 
 
 
-\# 23. Prueba con un nodo caído
+# 23. Prueba con un nodo caído
 
 
 
@@ -2012,9 +2012,9 @@ El error retornado fue:
 
 Cannot achieve consistency level ALL
 
-required\_replicas: 3
+required_replicas: 3
 
-alive\_replicas: 2
+alive_replicas: 2
 
 ```
 
@@ -2024,11 +2024,11 @@ Este comportamiento demuestra el compromiso existente entre consistencia y dispo
 
 
 
-\---
+---
 
 
 
-\# 24. Recuperación del clúster
+# 24. Recuperación del clúster
 
 
 
@@ -2084,11 +2084,11 @@ El nivel ALL volvió a funcionar correctamente después de la recuperación de `
 
 
 
-\---
+---
 
 
 
-\# 25. Resultados generales
+# 25. Resultados generales
 
 
 
@@ -2152,11 +2152,11 @@ ALL:                        Validado
 
 
 
-\---
+---
 
 
 
-\# 26. Organización del código
+# 26. Organización del código
 
 
 
@@ -2172,43 +2172,43 @@ Primer Proyecto/
 
 ├── cql/
 
-│   ├── 01\_keyspace.cql
+│   ├── 01_keyspace.cql
 
-│   ├── 02\_schema.cql
+│   ├── 02_schema.cql
 
-│   └── 03\_queries.cql
+│   └── 03_queries.cql
 
 │
 
 ├── scripts/
 
-│   ├── 01\_verificar\_conexion.py
+│   ├── 01_verificar_conexion.py
 
-│   ├── 02\_carga\_prueba.py
+│   ├── 02_carga_prueba.py
 
-│   ├── 03\_carga\_masiva.py
+│   ├── 03_carga_masiva.py
 
-│   └── 04\_prueba\_tolerancia.py
+│   └── 04_prueba_tolerancia.py
 
 │
 
 ├── diagramas/
 
-│   ├── modelo\_er\_conceptual.mmd
+│   ├── modelo_er_conceptual.mmd
 
-│   ├── modelo\_er\_conceptual.pdf
+│   ├── modelo_er_conceptual.pdf
 
-│   ├── modelo\_logico\_cassandra.mmd
+│   ├── modelo_logico_cassandra.mmd
 
-│   └── modelo\_logico\_cassandra.pdf
+│   └── modelo_logico_cassandra.pdf
 
 │
 
 ├── docs/
 
-│   ├── diseno\_query\_driven.md
+│   ├── diseno_query_driven.md
 
-│   └── documentacion\_tecnica.md
+│   └── documentacion_tecnica.md
 
 │
 
@@ -2220,7 +2220,7 @@ Primer Proyecto/
 
 │   ├── consultas/
 
-│   └── tolerancia\_fallos/
+│   └── tolerancia_fallos/
 
 │
 
@@ -2232,11 +2232,11 @@ Primer Proyecto/
 
 
 
-\---
+---
 
 
 
-\# 27. Conclusiones técnicas
+# 27. Conclusiones técnicas
 
 
 
@@ -2269,4 +2269,5 @@ Las pruebas de consistencia evidenciaron que ONE y QUORUM continúan disponibles
 
 
 Finalmente, la recuperación de `cassandra3` permitió restablecer completamente el clúster y volver a ejecutar satisfactoriamente consultas con Consistency Level ALL.
+
 
