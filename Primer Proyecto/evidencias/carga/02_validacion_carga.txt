@@ -1,0 +1,19 @@
+Reservas: 100000
+Pagos: 100000
+Historial Q2: 100000
+Manifiesto Q3: 100000
+Pasajeros: 5000
+Vuelos: 1000
+Asientos: 120000
+Disponibilidad Q1: 3000
+Ocupacion Q4: 1000
+Ranking Q5: 1000
+
+Carga realizada mediante:
+- Python
+- cassandra-driver 3.30.1
+- BatchStatement UNLOGGED
+- 5 reservas por batch
+- 4 statements por reserva
+- 20000 Batch Writes
+- Tiempo total: 26.44 segundos
