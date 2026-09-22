@@ -1,0 +1,110 @@
+PRUEBA DE TOLERANCIA A FALLOS - APACHE CASSANDRA
+
+Configuracion:
+- Nodos: 3
+- Replication Factor: 3
+- Estrategia: NetworkTopologyStrategy
+- Datacenter: datacenter1
+- Repeticiones por nivel: 20
+
+============================================================
+ESCENARIO 1 - 3 NODOS ACTIVOS
+============================================================
+
+ONE
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 15.781 ms
+- Latencia promedio: 17.041 ms
+- Latencia maxima: 21.171 ms
+
+QUORUM
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 7.487 ms
+- Latencia promedio: 16.109 ms
+- Latencia maxima: 25.148 ms
+
+ALL
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 9.179 ms
+- Latencia promedio: 16.960 ms
+- Latencia maxima: 28.605 ms
+
+============================================================
+ESCENARIO 2 - 1 NODO CAIDO
+============================================================
+
+ONE
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 6.567 ms
+- Latencia promedio: 15.107 ms
+- Latencia maxima: 21.327 ms
+
+QUORUM
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 10.802 ms
+- Latencia promedio: 16.361 ms
+- Latencia maxima: 23.195 ms
+
+ALL
+- Exitos: 0
+- Errores: 20
+- Latencia minima del intento: 8.916 ms
+- Latencia promedio del intento: 15.749 ms
+- Latencia maxima del intento: 22.702 ms
+
+Error observado:
+Cannot achieve consistency level ALL.
+Required replicas: 3.
+Alive replicas: 2.
+
+============================================================
+CONCLUSION
+============================================================
+
+Con Replication Factor 3, el nivel ONE permanece disponible
+mientras exista al menos una replica accesible.
+
+QUORUM requiere dos replicas para RF=3, por lo que continuo
+funcionando ante la caida de un nodo.
+
+ALL requiere las tres replicas, por lo que dejo de estar
+disponible cuando cassandra3 fue detenido.
+
+Esto demuestra el compromiso entre disponibilidad y
+consistencia de los diferentes Consistency Levels.
+
+============================================================
+ESCENARIO 3 - CLUSTER RECUPERADO
+============================================================
+
+ONE
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 12.334 ms
+- Latencia promedio: 16.667 ms
+- Latencia maxima: 21.832 ms
+
+QUORUM
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 12.785 ms
+- Latencia promedio: 15.671 ms
+- Latencia maxima: 17.908 ms
+
+ALL
+- Exitos: 20
+- Errores: 0
+- Latencia minima: 14.424 ms
+- Latencia promedio: 16.481 ms
+- Latencia maxima: 18.664 ms
+
+Luego de iniciar nuevamente cassandra3, los tres nodos
+regresaron al estado Up/Normal (UN).
+
+El nivel ALL volvio a operar correctamente, confirmando
+la recuperacion completa del cluster.
