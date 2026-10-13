@@ -1,0 +1,260 @@
+{
+  "style": {
+    "font-family": "sans-serif",
+    "background-color": "#ffffff",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#ffffff",
+    "border-width": 4,
+    "border-color": "#000000",
+    "radius": 50,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#000000",
+    "caption-font-size": 50,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "pill",
+    "label-color": "#000000",
+    "label-background-color": "#ffffff",
+    "label-border-color": "#000000",
+    "label-border-width": 4,
+    "label-font-size": 40,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "inline",
+    "detail-orientation": "parallel",
+    "arrow-width": 5,
+    "arrow-color": "#000000",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#000000",
+    "type-background-color": "#ffffff",
+    "type-border-color": "#000000",
+    "type-border-width": 0,
+    "type-font-size": 16,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#000000",
+    "property-font-size": 16,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": -333.8807723594476,
+        "y": -63.07479152478117
+      },
+      "caption": "TipoCocina",
+      "style": {},
+      "labels": [
+        "TipoCocina"
+      ],
+      "properties": {
+        "id": "1",
+        "nombre": "Italiana",
+        "descripcion": "Cocina tradicional de Italia"
+      }
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": -415.6756874389686,
+        "y": -333.7456070620784
+      },
+      "caption": "Usuario",
+      "labels": [
+        "Usuario"
+      ],
+      "properties": {
+        "id": "1",
+        "nombre": "Juan Perez",
+        "email": "juan@gmail.com",
+        "edad": "25",
+        "pais": "Guatemala"
+      },
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": -25.61952554309424,
+        "y": 148.9385058919563
+      },
+      "caption": "Platillo",
+      "labels": [
+        "Platillo"
+      ],
+      "properties": {
+        "id": "1",
+        "nombre": "Pizza Margarita",
+        "precio": "65.00",
+        "descripcion": "Pizza con tomate y mozzarella"
+      },
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": 291.0988494375442,
+        "y": -399.6338112651613
+      },
+      "caption": "Restaurante ",
+      "labels": [
+        "Restaurante"
+      ],
+      "properties": {
+        "id": "1",
+        "nombre": "La Parrilla",
+        "anio_apertura": "2015",
+        "rango_precios": "medio",
+        "descripcion": "Restaurante de carnes"
+      },
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": 313.8771387384119,
+        "y": 48.20561104169866
+      },
+      "caption": "Chef",
+      "labels": [
+        "Chef"
+      ],
+      "properties": {
+        "id": "1",
+        "nombre": "Carlos Lopez",
+        "fecha_nacimiento": "1985-04-12",
+        "nacionalidad": "Guatemalteca"
+      },
+      "style": {}
+    },
+    {
+      "id": "n5",
+      "position": {
+        "x": -120.35650136927019,
+        "y": -562.010319561904
+      },
+      "caption": "Usuario",
+      "labels": [
+        "Usuario"
+      ],
+      "properties": {
+        "id": "2",
+        "nombre": "Maria Lopez",
+        "email": "maria@gmail.com",
+        "edad": "27",
+        "pais": "Guatemala"
+      },
+      "style": {}
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "type": "CALIFICÓ",
+      "style": {
+        "directionality": "directed",
+        "detail-position": "above"
+      },
+      "properties": {
+        "puntuacion": "5",
+        "fecha": "2026-09-10",
+        "comentario": "excelente comida"
+      },
+      "fromId": "n1",
+      "toId": "n3"
+    },
+    {
+      "id": "n1",
+      "type": "VISITÓ",
+      "style": {
+        "detail-position": "below"
+      },
+      "properties": {
+        "fecha_visita": "2026-09-09",
+        "consumo": "85",
+        "con_reserva": "true"
+      },
+      "fromId": "n1",
+      "toId": "n3"
+    },
+    {
+      "id": "n2",
+      "type": "ES_AMIGO_DE",
+      "style": {},
+      "properties": {
+        "fecha_amistad": "2024-01-15"
+      },
+      "fromId": "n1",
+      "toId": "n5"
+    },
+    {
+      "id": "n3",
+      "type": "PERTENECE_A",
+      "style": {},
+      "properties": {},
+      "fromId": "n3",
+      "toId": "n0"
+    },
+    {
+      "id": "n4",
+      "type": "OFRECE",
+      "style": {},
+      "properties": {
+        "precio": "65",
+        "disponible": "true"
+      },
+      "fromId": "n3",
+      "toId": "n2"
+    },
+    {
+      "id": "n5",
+      "type": "PREPARA",
+      "style": {},
+      "properties": {
+        "estilo": "tradicional",
+        "especialidad": "cocina italiana",
+        "": ""
+      },
+      "fromId": "n4",
+      "toId": "n2"
+    },
+    {
+      "id": "n6",
+      "type": "TRABAJA_EN",
+      "style": {},
+      "properties": {
+        "fecha_inicio": "2020-02-01",
+        "puesto": "Chef principal"
+      },
+      "fromId": "n4",
+      "toId": "n3"
+    },
+    {
+      "id": "n7",
+      "type": "LE_GUSTA",
+      "style": {},
+      "properties": {
+        "nivel_interes": "5"
+      },
+      "fromId": "n1",
+      "toId": "n0"
+    }
+  ]
+}
