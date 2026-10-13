@@ -26,7 +26,8 @@ MATCH (r:Restaurante {id: 1})
 MERGE (u)-[v:`VISITÓ` {
     fecha_visita: date('2026-09-09')
 }]->(r)
-SET v.consumo = 85.0,
+SET v.id_visita = 1,
+    v.consumo = 85.0,
     v.con_reserva = true;
 
 // ========================================
